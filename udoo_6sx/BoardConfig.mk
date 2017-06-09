@@ -16,8 +16,8 @@ PRODUCT_COPY_FILES +=	\
 	device/udoo/udoo_6sx/fstab_nand.freescale:root/fstab.freescale
 else
 ADDITIONAL_BUILD_PROPERTIES += \
-                        ro.internel.storage_size=/sys/block/mmcblk3/size \
-                        ro.frp.pst=/dev/block/mmcblk3p12
+                        ro.internel.storage_size=/sys/block/mmcblk0/size \
+                        ro.frp.pst=/dev/block/mmcblk0p12
 ifneq ($(BUILD_TARGET_FS),f2fs)
 TARGET_RECOVERY_FSTAB = device/udoo/udoo_6sx/fstab.freescale
 # build for ext4

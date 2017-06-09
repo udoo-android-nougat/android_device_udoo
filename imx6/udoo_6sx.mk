@@ -31,7 +31,7 @@ PRODUCT_COPY_FILES += \
 	frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:system/etc/audio_policy_volumes.xml \
 
 # setup dm-verity configs.
- PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/mmcblk3p5
+ PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/mmcblk0p5
  $(call inherit-product, build/target/product/verity.mk)
 
 # GPU files

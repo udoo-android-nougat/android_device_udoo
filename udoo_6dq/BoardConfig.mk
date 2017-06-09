@@ -11,9 +11,9 @@ include device/udoo/imx6/imx6_target_fs.mk
 
 ifeq ($(BUILD_TARGET_DEVICE),sd)
 ADDITIONAL_BUILD_PROPERTIES += \
-                        ro.internel.storage_size=/sys/block/mmcblk2/size \
+                        ro.internel.storage_size=/sys/block/mmcblk0/size \
                         ro.boot.storage_type=sd \
-                        ro.frp.pst=/dev/block/mmcblk2p12
+                        ro.frp.pst=/dev/block/mmcblk0p12
 ifneq ($(BUILD_TARGET_FS),f2fs)
 TARGET_RECOVERY_FSTAB = device/udoo/udoo_6dq/fstab_sd.freescale
 # build for ext4
@@ -27,9 +27,9 @@ PRODUCT_COPY_FILES +=	\
 endif # BUILD_TARGET_FS
 else
 ADDITIONAL_BUILD_PROPERTIES += \
-                        ro.internel.storage_size=/sys/block/mmcblk3/size \
+                        ro.internel.storage_size=/sys/block/mmcblk0/size \
                         ro.boot.storage_type=emmc \
-                        ro.frp.pst=/dev/block/mmcblk3p12
+                        ro.frp.pst=/dev/block/mmcblk0p12
 ifneq ($(BUILD_TARGET_FS),f2fs)
 TARGET_RECOVERY_FSTAB = device/udoo/udoo_6dq/fstab.freescale
 # build for ext4
