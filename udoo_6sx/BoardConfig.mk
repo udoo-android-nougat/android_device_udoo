@@ -98,7 +98,7 @@ $(error "TARGET_USERIMAGES_USE_UBIFS and TARGET_USERIMAGES_USE_EXT4 config open 
 endif
 endif
 
-BOARD_KERNEL_CMDLINE := console=ttymxc1,115200 init=/init androidboot.console=ttymxc1 consoleblank=0 androidboot.hardware=freescale vmalloc=128M cma=448M
+BOARD_KERNEL_CMDLINE := console=ttymxc1,115200 init=/init androidboot.console=ttymxc1 androidboot.dm_verity=disabled consoleblank=0 androidboot.hardware=freescale vmalloc=128M cma=448M
 
 ifeq ($(TARGET_USERIMAGES_USE_UBIFS),true)
 #UBI boot command line.
