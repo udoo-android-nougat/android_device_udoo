@@ -1,5 +1,6 @@
 /dev/pmem_gpu             0660   system     graphics
-/dev/hci_tty              0666   bluetooth  bluetooth
+/dev/ttymxc2              0660   bluetooth  net_bt_stack
+/dev/ttymxc4              0660   bluetooth  net_bt_stack
 /dev/snd/*                0660   system     audio
 /dev/ttyUSB*              0640   radio      radio
 /dev/ttyACM*              0640   radio      radio
@@ -8,15 +9,18 @@
 /dev/video1               0660   system     camera
 /dev/video2               0660   system     camera
 /dev/video16              0660   system     graphics
-/dev/mxc_ipu              0660   media      system
-/dev/mxc_vpu              0660   media      system
+/dev/mxc_ipu              0660   media      drmrpc
+/dev/mxc_vpu              0660   media      drmrpc
+/dev/pxp_device           0660   media      drmrpc
 /dev/uinput               0660   system     net_bt_stack
-/dev/ion                  0666   media      system
+/dev/ion                  0666   media      drmrpc
 /dev/galcore	          0666 	 system     graphics
 /dev/graphics/fb0         0660   system     graphics
 /dev/watchdog             0660   system     root
+/dev/ir                   0660   system     system
 /dev/mma8x5x              0640   compass     system
 /dev/caam_kb              0660   system     system
+/dev/block/mmcblk*p12     0600   system     system
 
 # sysfs properties
 /sys/devices/virtual/input/input*   name        0660  root   input
@@ -33,19 +37,15 @@
 
 /sys/devices/platform/mxsdhci.2/mmc_host/mmc0/mmc0:000* boot_bus_config 0660 root root
 /sys/devices/platform/mxsdhci.2/mmc_host/mmc0/mmc0:000* boot_config 0660 root root
-# for a62
-/sys/devices/soc0/soc.1/2100000.aips-bus/21a8000.i2c/i2c-2/2-0044 mode 0660 system system
-/sys/devices/soc0/soc.1/2100000.aips-bus/21a8000.i2c/i2c-2/2-0044 lux 0660 system system
-/sys/devices/soc0/soc.1/2100000.aips-bus/21a8000.i2c/i2c-2/2-0044 int_lt_lux 0660 system system
-/sys/devices/soc0/soc.1/2100000.aips-bus/21a8000.i2c/i2c-2/2-0044 int_ht_lux 0660 system system
+# for sabresd
+/sys/devices/soc0/soc/2100000.aips-bus/21a8000.i2c/i2c-2/2-0044 mode 0660 system system
+/sys/devices/soc0/soc/2100000.aips-bus/21a8000.i2c/i2c-2/2-0044 lux 0660 system system
+/sys/devices/soc0/soc/2100000.aips-bus/21a8000.i2c/i2c-2/2-0044 int_lt_lux 0660 system system
+/sys/devices/soc0/soc/2100000.aips-bus/21a8000.i2c/i2c-2/2-0044 int_ht_lux 0660 system system
 # for sabreauto
-/sys/devices/soc0/soc.1/2100000.aips-bus/21a8000.i2c/i2c-1/1-0044 mode 0660 system system
-/sys/devices/soc0/soc.1/2100000.aips-bus/21a8000.i2c/i2c-1/1-0044 lux 0660 system system
-/sys/devices/soc0/soc.1/2100000.aips-bus/21a8000.i2c/i2c-1/1-0044 int_lt_lux 0660 system system
-/sys/devices/soc0/soc.1/2100000.aips-bus/21a8000.i2c/i2c-1/1-0044 int_ht_lux 0660 system system
-/sys/devices/platform/mxc_sdc_fb.0/graphics/fb*	fsl_disp_property 0660 system graphics
-/sys/devices/platform/mxc_sdc_fb.1/graphics/fb*	fsl_disp_property 0660 system graphics
-/sys/devices/platform/mxc_sdc_fb.0/graphics/fb*	mode 0660 system graphics
-/sys/devices/platform/mxc_sdc_fb.1/graphics/fb*	mode 0660 system graphics
+/sys/devices/soc0/soc/2100000.aips-bus/21a8000.i2c/i2c-1/1-0044 mode 0660 system system
+/sys/devices/soc0/soc/2100000.aips-bus/21a8000.i2c/i2c-1/1-0044 lux 0660 system system
+/sys/devices/soc0/soc/2100000.aips-bus/21a8000.i2c/i2c-1/1-0044 int_lt_lux 0660 system system
+/sys/devices/soc0/soc/2100000.aips-bus/21a8000.i2c/i2c-1/1-0044 int_ht_lux 0660 system system
 /sys/devices/platform/mxc_dvfs_core.0 enable 0660 system system
 /sys/devices/platform/busfreq.0 enable 0660 system system

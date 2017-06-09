@@ -27,6 +27,6 @@
 # Copied from build/target/product/AndroidProducts.mk
 
 PRODUCT_MAKEFILES := \
-  $(LOCAL_DIR)/a62_6dq.mk \
   $(LOCAL_DIR)/udoo_6dq.mk \
-  $(LOCAL_DIR)/udooneo_6sx.mk \
+  $(LOCAL_DIR)/udoo_6sx.mk \
+

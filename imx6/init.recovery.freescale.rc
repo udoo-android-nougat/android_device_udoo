@@ -5,12 +5,3 @@ on init
 on boot
     # ci_hdrc.0 is the fixed UDC name
     setprop sys.usb.controller ci_hdrc.0
-
-    write /sys/devices/virtual/vtconsole/vtcon0/bind 0
-    write /sys/devices/virtual/vtconsole/vtcon1/bind 0
-
-service getpropsym /sbin/busybox ln -sf /sbin/toolbox /sbin/getprop
-    oneshot
-
-service setpropsym /sbin/busybox ln -sf /sbin/toolbox /sbin/setprop
-    oneshot
