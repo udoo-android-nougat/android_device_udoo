@@ -81,7 +81,7 @@ TARGET_SELECT_KEY := 28
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 DM_VERITY_RUNTIME_CONFIG := true
 
-BOARD_KERNEL_CMDLINE := console=ttymxc1,115200 init=/init vmalloc=128M androidboot.console=ttymxc1 androidboot.dm_verity=disabled consoleblank=0 androidboot.hardware=freescale cma=448M
+BOARD_KERNEL_CMDLINE := console=ttymxc1,115200 init=/init vmalloc=128M androidboot.console=ttymxc1 consoleblank=0 androidboot.hardware=freescale cma=448M
 
 # Broadcom BCM4339 BT
 BOARD_HAVE_BLUETOOTH_BCM := true

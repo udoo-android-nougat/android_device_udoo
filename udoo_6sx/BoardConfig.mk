@@ -82,7 +82,7 @@ TARGET_SELECT_KEY := 28
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 DM_VERITY_RUNTIME_CONFIG := true
 
-BOARD_KERNEL_CMDLINE := console=ttymxc1,115200 init=/init androidboot.console=ttymxc1 androidboot.dm_verity=disabled consoleblank=0 androidboot.hardware=freescale vmalloc=128M cma=448M
+BOARD_KERNEL_CMDLINE := console=ttymxc1,115200 init=/init androidboot.console=ttymxc1 consoleblank=0 androidboot.hardware=freescale vmalloc=128M cma=448M
 
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/udoo/udoo_6sx/bluetooth
