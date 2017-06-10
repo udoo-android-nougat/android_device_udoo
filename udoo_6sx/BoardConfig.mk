@@ -3,7 +3,6 @@
 #
 
 include device/udoo/imx6/soc/imx6sx.mk
-include device/udoo/udoo_6sx/build_id.mk
 include device/udoo/imx6/BoardConfigCommon.mk
 
 # udoo_6sx default target for EXT4
