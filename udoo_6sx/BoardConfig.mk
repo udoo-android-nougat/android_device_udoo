@@ -31,8 +31,8 @@ PRODUCT_COPY_FILES += \
   device/udoo/udoo_6sx/fstab_f2fs.freescale:root/fstab.freescale
 endif
 
-TARGET_BOOTLOADER_BOARD_NAME := udoo
-PRODUCT_MODEL := udoo-MX6SX
+TARGET_BOOTLOADER_BOARD_NAME := UDOO
+PRODUCT_MODEL := UDOO-MX6SX
 
 TARGET_BOOTLOADER_POSTFIX := imx
 
