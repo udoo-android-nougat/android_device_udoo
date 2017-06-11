@@ -15,6 +15,7 @@ endif
 # Overrides
 PRODUCT_NAME := udoo_6sx
 PRODUCT_DEVICE := udoo_6sx
+PRODUCT_MODEL := UDOO-MX6SX
 
 PRODUCT_COPY_FILES += \
 	device/udoo/udoo_6sx/init.rc:root/init.freescale.rc \

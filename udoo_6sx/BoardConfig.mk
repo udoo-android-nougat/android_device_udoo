@@ -31,10 +31,16 @@ PRODUCT_COPY_FILES += \
   device/udoo/udoo_6sx/fstab_f2fs.freescale:root/fstab.freescale
 endif
 
+# Bootloader (u-boot)
+TARGET_BOOTLOADER_CONFIG := imx6sx:mx6sxudooandroid_config
 TARGET_BOOTLOADER_BOARD_NAME := UDOO
-PRODUCT_MODEL := UDOO-MX6SX
-
 TARGET_BOOTLOADER_POSTFIX := imx
+
+# Kernel
+TARGET_KERNEL_DEFCONF := udoo_sx_android_defconfig
+TARGET_BOARD_DTS_CONFIG := imx6sx:imx6sx-sdb.dtb
+BOARD_KERNEL_CMDLINE := console=ttymxc1,115200 init=/init androidboot.console=ttymxc1 consoleblank=0 androidboot.hardware=freescale vmalloc=128M cma=448M
+TARGET_BOARD_KERNEL_HEADERS := device/udoo/common/kernel-headers
 
 TARGET_RELEASETOOLS_EXTENSIONS := device/udoo/imx6
 # UNITE is a virtual device.
@@ -65,24 +71,11 @@ WIFI_DRIVER_FW_PATH_P2P        := "/system/etc/firmware/bcm/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_AP         := "/system/etc/firmware/bcm/fw_bcmdhd_apsta.bin"
 WIFI_DRIVER_FW_PATH_PARAM      := "/sys/module/bcmdhd/parameters/firmware_path"
 
-BOARD_MODEM_VENDOR := AMAZON
-
-USE_ATHR_GPS_HARDWARE := true
-USE_QEMU_GPS_HARDWARE := false
-
-PHONE_MODULE_INCLUDE := flase
-#for accelerator sensor, need to define sensor type here
-BOARD_HAS_SENSOR := true
-SENSOR_MMA8451 := true
-
 # for recovery service
 TARGET_SELECT_KEY := 28
 
 # we don't support sparse image.
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
-DM_VERITY_RUNTIME_CONFIG := true
-
-BOARD_KERNEL_CMDLINE := console=ttymxc1,115200 init=/init androidboot.console=ttymxc1 consoleblank=0 androidboot.hardware=freescale vmalloc=128M cma=448M
 
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/udoo/udoo_6sx/bluetooth
@@ -94,13 +87,8 @@ USE_GPU_ALLOCATOR := true
 IMX_CAMERA_HAL_V1 := true
 TARGET_VSYNC_DIRECT_REFRESH := true
 
-TARGET_BOOTLOADER_CONFIG := imx6sx:mx6sxudooandroid_config
-TARGET_BOARD_DTS_CONFIG := imx6sx:imx6sx-sdb.dtb
-
 BOARD_SEPOLICY_DIRS := \
        device/udoo/imx6/sepolicy \
        device/udoo/udoo_6sx/sepolicy
 
 BOARD_SECCOMP_POLICY += device/udoo/udoo_6sx/seccomp
-
-TARGET_BOARD_KERNEL_HEADERS := device/udoo/common/kernel-headers
