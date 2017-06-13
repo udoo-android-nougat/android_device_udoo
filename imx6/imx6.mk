@@ -122,9 +122,7 @@ PRODUCT_PACKAGES += \
 	power.imx6				\
 	audio.r_submix.default			\
 	libbt-vendor				\
-	libbt-vendor-broadcom		\
-	magd
-
+	libbt-vendor-broadcom
 
 # Freescale VPU firmware files.
 PRODUCT_PACKAGES += \
