@@ -4,17 +4,11 @@
 # "sudo apt-get install android-tools-fsutils"
 
 # partition size in MB
-BOOTLOAD_RESERVE=8
-BOOT_ROM_SIZE=32
-SYSTEM_ROM_SIZE=1536
+BOOTLOADER=8
+BOOT_SIZE=15
+SYSTEM_SIZE=1536
 CACHE_SIZE=512
-RECOVERY_ROM_SIZE=32
-DEVICE_SIZE=8
-MISC_SIZE=4
-DATAFOOTER_SIZE=2
-METADATA_SIZE=2
-FBMISC_SIZE=1
-PRESISTDATA_SIZE=1
+RECOVERY_SIZE=32
 
 help() {
 
@@ -36,6 +30,7 @@ moreoptions=1
 node="na"
 soc_name=""
 cal_only=0
+bootloader_offset=1
 flash_images=0
 not_partition=0
 not_format_fs=0
@@ -73,27 +68,20 @@ fi
 
 # call sfdisk to create partition table
 # get total card size
-seprate=100
 total_size=`sfdisk -s ${node}`
 total_size=`expr ${total_size} / 1024`
-boot_rom_sizeb=`expr ${BOOT_ROM_SIZE} + ${BOOTLOAD_RESERVE}`
-extend_size=`expr ${SYSTEM_ROM_SIZE} + ${CACHE_SIZE} + ${DEVICE_SIZE} + ${MISC_SIZE} + ${FBMISC_SIZE} + ${PRESISTDATA_SIZE} + ${DATAFOOTER_SIZE} + ${METADATA_SIZE} +${seprate}`
-data_size=`expr ${total_size} - ${boot_rom_sizeb} - ${RECOVERY_ROM_SIZE} - ${extend_size} `
+BOOT_SIZEb=`expr ${BOOT_SIZE} + ${BOOTLOADER}`
+extend_size=`expr ${SYSTEM_SIZE} + ${CACHE_SIZE}`
+data_size=`expr ${total_size} - ${BOOT_SIZEb} - ${RECOVERY_SIZE} - ${extend_size}`
 
 # create partitions
 if [ "${cal_only}" -eq "1" ]; then
 cat << EOF
-BOOT   : ${boot_rom_sizeb}MB
-RECOVERY: ${RECOVERY_ROM_SIZE}MB
-SYSTEM : ${SYSTEM_ROM_SIZE}MB
+BOOT   : ${BOOT_SIZEb}MB
+RECOVERY: ${RECOVERY_SIZE}MB
+SYSTEM : ${SYSTEM_SIZE}MB
 CACHE  : ${CACHE_SIZE}MB
 DATA   : ${data_size}MB
-MISC   : ${MISC_SIZE}MB
-DEVICE : ${DEVICE_SIZE}MB
-DATAFOOTER : ${DATAFOOTER_SIZE}MB
-METADATA : ${METADATA_SIZE}MB
-FBMISC   : ${FBMISC_SIZE}MB
-PRESISTDATA : ${PRESISTDATA_SIZE}MB
 EOF
 exit
 fi
@@ -101,10 +89,9 @@ fi
 function format_android
 {
     echo "formating android images"
-    mkfs.f2fs ${node}${part}4 -l data
+    mkfs.ext4 ${node}${part}4 -Ldata
     mkfs.ext4 ${node}${part}5 -Lsystem
-    mkfs.f2fs ${node}${part}6 -l cache
-    mkfs.ext4 ${node}${part}7 -Ldevice
+    mkfs.ext4 ${node}${part}6 -Lcache
 }
 
 function flash_android
@@ -114,7 +101,7 @@ function flash_android
     recoveryimage_file="recovery-${soc_name}.img"
 if [ "${flash_images}" -eq "1" ]; then
     echo "flashing android images..."    
-    echo "bootloader: ${bootloader_file}"
+    echo "bootloader: ${bootloader_file} offset: ${bootloader_offset}"
     echo "boot image: ${bootimage_file}"
     echo "recovery image: ${recoveryimage_file}"
     echo "system image: ${systemimage_file}"
@@ -125,7 +112,6 @@ if [ "${flash_images}" -eq "1" ]; then
     simg2img ${systemimage_file} ${systemimage_raw_file}
     dd if=${systemimage_raw_file} of=${node}${part}5 conv=fsync
     rm ${systemimage_raw_file}
-    sync
 fi
 }
 
@@ -134,29 +120,22 @@ if [[ "${not_partition}" -eq "1" && "${flash_images}" -eq "1" ]] ; then
     exit
 fi
 
-
-sfdisk --force ${opt_unit} ${node} << EOF
-,${boot_rom_sizeb}${unit_mb},83
-,${RECOVERY_ROM_SIZE}${unit_mb},83
+sfdisk --force ${opt_unit}  ${node} << EOF
+,${BOOT_SIZEb}${unit_mb},83
+,${RECOVERY_SIZE}${unit_mb},83
 ,${extend_size}${unit_mb},5
 ,${data_size}${unit_mb},83
-,${SYSTEM_ROM_SIZE}${unit_mb},83
+,${SYSTEM_SIZE}${unit_mb},83
 ,${CACHE_SIZE}${unit_mb},83
-,${DEVICE_SIZE}${unit_mb},83
-,${MISC_SIZE}${unit_mb},83
-,${DATAFOOTER_SIZE}${unit_mb},83
-,${METADATA_SIZE}${unit_mb},83
-,${FBMISC_SIZE}${unit_mb},83
-,${PRESISTDATA_SIZE}${unit_mb},83
 EOF
 
 # adjust the partition reserve for bootloader.
-# if you don't put the uboot on same device, you can remove the BOOTLOADER_ERSERVE
+# if you don't put the uboot on same device, you can remove the BOOTLOADER
 # to have 8M space.
 # the minimal sylinder for some card is 4M, maybe some was 8M
 # just 8M for some big eMMC 's sylinder
 sfdisk --force ${opt_unit} ${node} -N1 << EOF
-${BOOTLOAD_RESERVE}${unit_mb},${BOOT_ROM_SIZE}${unit_mb},83
+${BOOTLOADER}${unit_mb},${BOOT_SIZE}${unit_mb},83
 EOF
 
 # sleep 5s after re-partition
@@ -176,12 +155,3 @@ fi
 format_android
 flash_android
 
-
-# For MFGTool Notes:
-# MFGTool use mksdcard-android.tar store this script
-# if you want change it.
-# do following:
-#   tar xf mksdcard-android.sh.tar
-#   vi mksdcard-android.sh 
-#   [ edit want you want to change ]
-#   rm mksdcard-android.sh.tar; tar cf mksdcard-android.sh.tar mksdcard-android.sh

@@ -17,7 +17,6 @@ endif
 
 # Build in EXT4
 ifeq ($(BUILD_TARGET_FS),ext4)
-TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_RECOVERY_FSTAB = device/udoo/udoo_6sx/fstab_ext4.freescale
 PRODUCT_COPY_FILES += \
   device/udoo/udoo_6sx/fstab_ext4.freescale:root/fstab.freescale
@@ -25,7 +24,6 @@ endif
 
 # Build in F2FS
 ifeq ($(BUILD_TARGET_FS),f2fs)
-TARGET_USERIMAGES_USE_F2FS := true
 TARGET_RECOVERY_FSTAB = device/udoo/udoo_6sx/fstab_f2fs.freescale
 PRODUCT_COPY_FILES += \
   device/udoo/udoo_6sx/fstab_f2fs.freescale:root/fstab.freescale
@@ -75,6 +73,7 @@ WIFI_DRIVER_FW_PATH_PARAM      := "/sys/module/bcmdhd/parameters/firmware_path"
 TARGET_SELECT_KEY := 28
 
 # we don't support sparse image.
+TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 
 BOARD_HAVE_BLUETOOTH_BCM := true
