@@ -94,6 +94,11 @@ ADDITIONAL_BUILD_PROPERTIES += \
     ro.FSL_MPG2_PARSER=1 \
     ro.FSL_REAL_PARSER=0 \
 
+ADDITIONAL_BUILD_PROPERTIES += \
+    ro.internel.storage_size=/sys/block/mmcblk0/size \
+    ro.boot.storage_type=sd \
+    ro.frp.pst=/dev/block/mmcblk0p12
+
 # TWRP
 TW_THEME := landscape_hdpi
 RECOVERY_GRAPHICS_FORCE_SINGLE_BUFFER := true

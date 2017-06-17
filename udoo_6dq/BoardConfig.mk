@@ -8,13 +8,6 @@ include device/udoo/imx6/BoardConfigCommon.mk
 # udoo_6dq default target for EXT4
 BUILD_TARGET_FS ?= ext4
 
-ifeq ($(BUILD_TARGET_DEVICE),sd)
-ADDITIONAL_BUILD_PROPERTIES += \
-  ro.internel.storage_size=/sys/block/mmcblk0/size \
-  ro.boot.storage_type=sd \
-  ro.frp.pst=/dev/block/mmcblk0p12
-endif
-
 # Build in EXT4
 ifeq ($(BUILD_TARGET_FS),ext4)
 TARGET_RECOVERY_FSTAB = device/udoo/udoo_6dq/fstab_ext4.freescale
