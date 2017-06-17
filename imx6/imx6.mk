@@ -116,6 +116,7 @@ PRODUCT_PACKAGES += \
 	libdrmframework             		\
 	libdrmpassthruplugin        		\
 	libfwdlockengine            		\
+
 # power tool
 PRODUCT_PACKAGES += \
 	powerdebug
