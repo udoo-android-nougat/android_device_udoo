@@ -49,6 +49,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/fsl-proprietary/gpu-viv/lib/egl/egl.cfg:system/lib/egl/egl.cfg
 
+# Sensors
+PRODUCT_PACKAGES += \
+    magd
+
 PRODUCT_PACKAGES += \
     libEGL_VIVANTE \
     libGLESv1_CM_VIVANTE \
