@@ -108,9 +108,9 @@ if [ "${flash_images}" -eq "1" ]; then
     dd if=/dev/zero of=${node} bs=1k seek=${bootloader_offset} conv=fsync count=800
     dd if=${bootloader_file} of=${node} bs=1k seek=${bootloader_offset} conv=fsync
     dd if=${bootimage_file} of=${node}${part}1 conv=fsync
-    dd if=${recoveryimage_file} of=${node}${part}2 conv=fsync
+    dd if=${recoveryimage_file} of=${node}${part}2 bs=2M conv=fsync
     simg2img ${systemimage_file} ${systemimage_raw_file}
-    dd if=${systemimage_raw_file} of=${node}${part}5 conv=fsync
+    dd if=${systemimage_raw_file} of=${node}${part}5 bs=2M conv=fsync status=progress
     rm ${systemimage_raw_file}
 fi
 }
