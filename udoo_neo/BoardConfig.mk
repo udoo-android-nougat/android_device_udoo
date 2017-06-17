@@ -5,21 +5,21 @@
 include device/udoo/imx6/soc/imx6sx.mk
 include device/udoo/imx6/BoardConfigCommon.mk
 
-# udoo_6sx default target for EXT4
+# udoo_neo default target for EXT4
 BUILD_TARGET_FS ?= ext4
 
 # Build in EXT4
 ifeq ($(BUILD_TARGET_FS),ext4)
-TARGET_RECOVERY_FSTAB = device/udoo/udoo_6sx/fstab_ext4.freescale
+TARGET_RECOVERY_FSTAB = device/udoo/udoo_neo/fstab_ext4.freescale
 PRODUCT_COPY_FILES += \
-  device/udoo/udoo_6sx/fstab_ext4.freescale:root/fstab.freescale
+  device/udoo/udoo_neo/fstab_ext4.freescale:root/fstab.freescale
 endif
 
 # Build in F2FS
 ifeq ($(BUILD_TARGET_FS),f2fs)
-TARGET_RECOVERY_FSTAB = device/udoo/udoo_6sx/fstab_f2fs.freescale
+TARGET_RECOVERY_FSTAB = device/udoo/udoo_neo/fstab_f2fs.freescale
 PRODUCT_COPY_FILES += \
-  device/udoo/udoo_6sx/fstab_f2fs.freescale:root/fstab.freescale
+  device/udoo/udoo_neo/fstab_f2fs.freescale:root/fstab.freescale
 endif
 
 # Bootloader (u-boot)
@@ -70,7 +70,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/udoo/udoo_6sx/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/udoo/udoo_neo/bluetooth
 
 USE_ION_ALLOCATOR := false
 USE_GPU_ALLOCATOR := true
@@ -81,6 +81,6 @@ TARGET_VSYNC_DIRECT_REFRESH := true
 
 BOARD_SEPOLICY_DIRS := \
        device/udoo/imx6/sepolicy \
-       device/udoo/udoo_6sx/sepolicy
+       device/udoo/udoo_neo/sepolicy
 
-BOARD_SECCOMP_POLICY += device/udoo/udoo_6sx/seccomp
+BOARD_SECCOMP_POLICY += device/udoo/udoo_neo/seccomp

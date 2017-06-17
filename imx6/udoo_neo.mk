@@ -4,20 +4,20 @@
 $(call inherit-product, device/udoo/imx6/imx6.mk)
 
 # Overrides
-PRODUCT_NAME := udoo_6sx
-PRODUCT_DEVICE := udoo_6sx
-PRODUCT_MODEL := UDOO-MX6SX
+PRODUCT_NAME := udoo_neo
+PRODUCT_DEVICE := udoo_neo
+PRODUCT_MODEL := UDOO-NEO
 
 # initrc
 PRODUCT_COPY_FILES += \
-	device/udoo/udoo_6sx/init.rc:root/init.freescale.rc \
+	device/udoo/udoo_neo/init.rc:root/init.freescale.rc \
 
 # Audio
 USE_XML_AUDIO_POLICY_CONF := 1
 PRODUCT_COPY_FILES += \
-    device/udoo/udoo_6sx/audio_effects.conf:system/etc/audio_effects.conf \
-    device/udoo/udoo_6sx/audio_policy.conf:system/etc/audio_policy.conf \
-    device/udoo/udoo_6sx/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
+    device/udoo/udoo_neo/audio_effects.conf:system/etc/audio_effects.conf \
+    device/udoo/udoo_neo/audio_policy.conf:system/etc/audio_policy.conf \
+    device/udoo/udoo_neo/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:system/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:system/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:system/etc/usb_audio_policy_configuration.xml \
@@ -26,7 +26,7 @@ PRODUCT_COPY_FILES += \
 
 # GPU files
 
-DEVICE_PACKAGE_OVERLAYS := device/udoo/udoo_6sx/overlay
+DEVICE_PACKAGE_OVERLAYS := device/udoo/udoo_neo/overlay
 
 PRODUCT_CHARACTERISTICS := tablet
 
@@ -44,7 +44,7 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
 	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
 	frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
-	device/udoo/udoo_6sx/required_hardware.xml:system/etc/permissions/required_hardware.xml
+	device/udoo/udoo_neo/required_hardware.xml:system/etc/permissions/required_hardware.xml
 
 PRODUCT_COPY_FILES += \
     device/fsl-proprietary/gpu-viv/lib/egl/egl.cfg:system/lib/egl/egl.cfg
