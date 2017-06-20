@@ -30,7 +30,7 @@ TARGET_BOOTLOADER_POSTFIX := imx
 # Kernel
 TARGET_KERNEL_DEFCONF := udoo_sx_android_defconfig
 TARGET_BOARD_DTS_CONFIG := imx6sx:imx6sx-sdb.dtb
-BOARD_KERNEL_CMDLINE := console=ttymxc1,115200 init=/init androidboot.console=ttymxc1 consoleblank=0 androidboot.hardware=freescale vmalloc=128M cma=448M
+BOARD_KERNEL_CMDLINE := console=ttymxc1,115200 init=/init androidboot.console=ttymxc1 consoleblank=0 androidboot.hardware=freescale vmalloc=128M cma=448M androidboot.selinux=permissive
 TARGET_BOARD_KERNEL_HEADERS := device/udoo/common/kernel-headers
 
 TARGET_RELEASETOOLS_EXTENSIONS := device/udoo/imx6
