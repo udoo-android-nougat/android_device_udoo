@@ -9,6 +9,17 @@ PRODUCT_MANUFACTURER := Seco
 PRODUCT_COPY_FILES += \
     device/udoo/imx6/twrp.fstab:recovery/root/etc/twrp.fstab
 
+# Wi-Fi
+PRODUCT_PACKAGES += \
+    wpa_supplicant \
+    libwpa_client \
+    wpa_supplicant.conf
+
+PRODUCT_COPY_FILES += \
+    device/udoo/common/wifi/p2p_supplicant_advance_overlay.conf:system/etc/wifi/p2p_supplicant_advance_overlay.conf \
+    device/udoo/common/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+    device/udoo/common/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
+
 # Android infrastructures
 PRODUCT_PACKAGES += \
 	LiveWallpapers				\
@@ -49,11 +60,6 @@ PRODUCT_PACKAGES += \
 	ip-up-vpn				\
 	ip-up-ppp0				\
 	ip-down-ppp0				\
-	libwpa_client				\
-	wpa_supplicant.conf			\
-	p2p_supplicant_overlay.conf			\
-	wpa_supplicant_overlay.conf			\
-    p2p_supplicant_advance_overlay.conf \
 	libion
 
 #FREESCALE_EXTENDED

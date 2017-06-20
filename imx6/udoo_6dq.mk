@@ -15,6 +15,10 @@ PRODUCT_COPY_FILES += \
     device/udoo/udoo_6dq/initrc/init.i.MX6DL.rc:root/init.freescale.i.MX6DL.rc \
     device/udoo/udoo_6dq/initrc/init.i.MX6QP.rc:root/init.freescale.i.MX6QP.rc
 
+# Wi-Fi firmware
+PRODUCT_COPY_FILES += \
+    device/udoo/common/wifi/firmware/rt5370/rt2870.bin:system/etc/firmware/rt2870.bin
+
 # Audio
 USE_XML_AUDIO_POLICY_CONF := 1
 PRODUCT_COPY_FILES += \

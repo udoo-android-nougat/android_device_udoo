@@ -41,34 +41,23 @@ TARGET_KERNEL_MODULES := \
     arch/arm/boot/dts/imx6q-udoo-lvds7.dtb:system/dts/imx6q-udoo-lvds7.dtb \
     arch/arm/boot/dts/imx6q-udoo-lvds15.dtb:system/dts/imx6q-udoo-lvds15.dtb
 
-TARGET_RELEASETOOLS_EXTENSIONS := device/udoo/imx6
-# UNITE is a virtual device.
-BOARD_WLAN_DEVICE            := UNITE
-WPA_SUPPLICANT_VERSION       := VER_0_8_UNITE
-
-BOARD_WPA_SUPPLICANT_DRIVER  := NL80211
-BOARD_HOSTAPD_DRIVER         := NL80211
-
-BOARD_HOSTAPD_PRIVATE_LIB_BCM               := lib_driver_cmd_bcmdhd
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB_BCM        := lib_driver_cmd_bcmdhd
-
-BOARD_SUPPORT_BCM_WIFI  := true
-#for intel vendor
-ifeq ($(BOARD_WLAN_VENDOR),INTEL)
-BOARD_HOSTAPD_PRIVATE_LIB                := private_lib_driver_cmd
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB         := private_lib_driver_cmd
+# Wi-Fi
+BOARD_WLAN_DEVICE                        := RALINK
 WPA_SUPPLICANT_VERSION                   := VER_0_8_X
-HOSTAPD_VERSION                          := VER_0_8_X
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB         := private_lib_driver_cmd_intel
-WIFI_DRIVER_MODULE_PATH                  := "/system/lib/modules/iwlagn.ko"
-WIFI_DRIVER_MODULE_NAME                  := "iwlagn"
-WIFI_DRIVER_MODULE_PATH                  ?= auto
-endif
+BOARD_WPA_SUPPLICANT_DRIVER              := NL80211
+# BOARD_HOSTAPD_DRIVER                   := NL80211
+WIFI_DRIVER_STATE_CTRL_PARAM             := true
+WIFI_DRIVER_MODULE_PATH                  := "/system/lib/modules/rt2800usb.ko"
+WIFI_DRIVER_MODULE_NAME                  := "rt2800usb"
+TARGET_KERNEL_MODULES += \
+    net/mac80211/mac80211.ko:system/lib/modules/mac80211.ko \
+    net/wireless/cfg80211.ko:system/lib/modules/cfg80211.ko \
+    drivers/net/wireless/rt2x00/rt2800lib.ko:system/lib/modules/rt2800lib.ko \
+    drivers/net/wireless/rt2x00/rt2800usb.ko:system/lib/modules/rt2800usb.ko \
+    drivers/net/wireless/rt2x00/rt2x00lib.ko:system/lib/modules/rt2x00lib.ko \
+    drivers/net/wireless/rt2x00/rt2x00usb.ko:system/lib/modules/rt2x00usb.ko
 
-WIFI_DRIVER_FW_PATH_STA        := "/system/etc/firmware/bcm/fw_bcmdhd.bin"
-WIFI_DRIVER_FW_PATH_P2P        := "/system/etc/firmware/bcm/fw_bcmdhd.bin"
-WIFI_DRIVER_FW_PATH_AP         := "/system/etc/firmware/bcm/fw_bcmdhd_apsta.bin"
-WIFI_DRIVER_FW_PATH_PARAM      := "/sys/module/bcmdhd/parameters/firmware_path"
+TARGET_RELEASETOOLS_EXTENSIONS := device/udoo/imx6
 
 # for recovery service
 TARGET_SELECT_KEY := 28
