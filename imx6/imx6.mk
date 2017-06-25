@@ -1,5 +1,5 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/generic.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/generic_no_telephony.mk)
 $(call inherit-product, $(TOPDIR)frameworks/base/data/sounds/AllAudio.mk)
 
 PRODUCT_BRAND := Seco
@@ -323,6 +323,11 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # enlarge media max memory size to 3G.
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.media.maxmem=3221225472
+
+# Set no RIL (Wi-Fi only)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.radio.noril=yes \
+    ro.carrier=wifi-only
 
 #this must be set before including tablet-7in-hdpi-1024-dalvik-heap.mk
 PRODUCT_PROPERTY_OVERRIDES += \
