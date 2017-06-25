@@ -275,11 +275,14 @@ PRODUCT_PACKAGES += \
 	ntfs-3g		\
 	ntfsfix 	
 
+# AAPT config
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := mdpi
+PRODUCT_CHARACTERISTICS := tablet
+
 # for CtsVerifier
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
-
-PRODUCT_AAPT_CONFIG := normal mdpi
 
 # ril related libs
 PRODUCT_PACKAGES += \

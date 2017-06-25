@@ -28,10 +28,6 @@ PRODUCT_COPY_FILES += \
 
 DEVICE_PACKAGE_OVERLAYS := device/udoo/udoo_neo/overlay
 
-PRODUCT_CHARACTERISTICS := tablet
-
-PRODUCT_AAPT_CONFIG += xlarge large tvdpi hdpi xhdpi
-
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
 	frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
