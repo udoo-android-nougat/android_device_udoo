@@ -284,10 +284,6 @@ PRODUCT_CHARACTERISTICS := tablet
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
-# ril related libs
-PRODUCT_PACKAGES += \
-	libruntime-ril-port
-
 PRODUCT_PACKAGES += \
     charger_res_images \
     charger
