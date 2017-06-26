@@ -71,11 +71,6 @@ PRODUCT_PACKAGES += \
 	Type_ZP.hcd   	\
 	bt_vendor.conf
 
-# Debug utils
-PRODUCT_PACKAGES += \
-	taskset					\
-	sqlite3
-
 # Wifi AP mode
 PRODUCT_PACKAGES += \
 	hostapd					\
@@ -122,10 +117,6 @@ PRODUCT_PACKAGES += \
 	libdrmframework             		\
 	libdrmpassthruplugin        		\
 	libfwdlockengine            		\
-
-# gpu debug tool
-PRODUCT_PACKAGES += \
-	gmem_info
 
 # Omx related libs, please align to device/udoo/proprietary/omx/fsl-omx.mk
 omx_libs := \
