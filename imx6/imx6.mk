@@ -337,9 +337,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
         dalvik.vm.heapgrowthlimit=128m
 
-PRODUCT_DEFAULT_DEV_CERTIFICATE := \
-        device/udoo/common/security/testkey
-
 # In userdebug, add minidebug info the the boot image and the system server to support
 # diagnosing native crashes.
 ifneq (,$(filter userdebug, $(TARGET_BUILD_VARIANT)))
