@@ -29,33 +29,13 @@ PRODUCT_PACKAGES += \
 	LiveWallpapersPicker			\
 	MagicSmokeWallpapers			\
 	Gallery2				\
-	Gallery		    			\
 	SoundRecorder				\
 	Camera					\
         LegacyCamera                            \
-	Email					\
-	CactusPlayer                            \
-	WfdSink                                 \
-	wfd                                     \
-	A2dpSinkApp                             \
-	BleServerEmulator                       \
-	BleClient                               \
 	ethernet                                \
-	libfsl_wfd.so                           \
-	libfsl_wfd                           \
 	libpxp                               \
-	fsl.imx.jar                             \
-	libfsl_hdcp_blob.so                     \
-	libfsl_hdcp_blob                     \
-	libstagefright_hdcp.so                  \
-	libstagefright_hdcp                  \
-	VideoEditor				\
-	FSLProfileApp				\
-	FSLProfileService			\
 	VisualizationWallpapers			\
 	CubeLiveWallpapers			\
-	PinyinIME				\
-	libjni_pinyinime        		\
 	libRS					\
 	librs_jni				\
 	pppd					\
@@ -64,10 +44,6 @@ PRODUCT_PACKAGES += \
 	ip-up-ppp0				\
 	ip-down-ppp0				\
 	libion
-
-#FREESCALE_EXTENDED
-PRODUCT_PACKAGES += freescale-extended 		\
-		    freescale-extended.xml
 
 # Broadcom firmwares
 PRODUCT_PACKAGES += \
@@ -102,7 +78,12 @@ PRODUCT_PACKAGES += \
 	power.imx6				\
 	audio.r_submix.default			\
 	libbt-vendor				\
+<<<<<<< HEAD
 	libbt-vendor-broadcom
+=======
+	libbt-vendor-broadcom		\
+	magd
+>>>>>>> 16800f8... Remove unused packages
 
 # Freescale VPU firmware files.
 PRODUCT_PACKAGES += \
