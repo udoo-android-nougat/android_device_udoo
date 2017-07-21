@@ -78,12 +78,7 @@ PRODUCT_PACKAGES += \
 	power.imx6				\
 	audio.r_submix.default			\
 	libbt-vendor				\
-<<<<<<< HEAD
 	libbt-vendor-broadcom
-=======
-	libbt-vendor-broadcom		\
-	magd
->>>>>>> 16800f8... Remove unused packages
 
 # Freescale VPU firmware files.
 PRODUCT_PACKAGES += \
