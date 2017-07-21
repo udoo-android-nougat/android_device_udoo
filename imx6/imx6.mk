@@ -2,6 +2,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_no_telephony.mk)
 $(call inherit-product, $(TOPDIR)frameworks/base/data/sounds/AllAudio.mk)
 
+# Include AOSPMod config
+include vendor/aospmod/am_config.mk
+
 PRODUCT_BRAND := Seco
 PRODUCT_MANUFACTURER := Seco
 
