@@ -23,6 +23,15 @@ PRODUCT_COPY_FILES += \
     device/udoo/common/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
     device/udoo/common/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
 
+# Superuser
+PRODUCT_PACKAGES += \
+    Superuser \
+    su
+
+SUPERUSER_EMBEDDED := true
+SUPERUSER_PACKAGE_PREFIX := com.android.settings.cyanogenmod.superuser
+PRODUCT_PROPERTY_OVERRIDES += persist.sys.root_access=1
+
 # Android infrastructures
 PRODUCT_PACKAGES += \
 	LiveWallpapers				\
