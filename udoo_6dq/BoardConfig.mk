@@ -28,8 +28,12 @@ TARGET_BOOTLOADER_BOARD_NAME := UDOO
 TARGET_BOOTLOADER_POSTFIX := imx
 
 # Kernel
+TARGET_KERNEL_SOURCE := kernel
 TARGET_KERNEL_DEFCONF := udoo_quad_dual_android_defconfig
+BOARD_KERNEL_IMAGE_NAME := zImage
 BOARD_KERNEL_CMDLINE := console=ttymxc1,115200 init=/init vmalloc=128M androidboot.console=ttymxc1 consoleblank=0 androidboot.hardware=freescale cma=448M androidboot.selinux=permissive
+BOARD_KERNEL_BASE := 0x14000000
+LOAD_KERNEL_ENTRY := 0x10008000
 TARGET_BOARD_DTS_CONFIG := imx6q:imx6q-udoo-hdmi.dtb
 TARGET_BOARD_DTS_FILES := imx6{q,dl}-udoo{-lvds7,-lvds15,-hdmi}.dtb
 TARGET_BOARD_KERNEL_HEADERS := device/udoo/common/kernel-headers

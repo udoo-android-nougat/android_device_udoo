@@ -8,8 +8,6 @@ HAVE_FSL_IMX_GPU2D := true
 HAVE_FSL_IMX_GPU3D := true
 HAVE_FSL_IMX_IPU := true
 HAVE_FSL_IMX_PXP := false
-BOARD_KERNEL_BASE := 0x14000000
-LOAD_KERNEL_ENTRY := 0x10008000
 -include external/fsl_vpu_omx/codec_env.mk
 -include external/fsl_imx_omx/codec_env.mk
 TARGET_GRALLOC_VERSION := v2
