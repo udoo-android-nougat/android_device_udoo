@@ -10,8 +10,12 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := cortex-a9
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
-# set GCC version
+# Set arm-linux-androideabi version to be used to compile Android
 TARGET_GCC_VERSION_EXP := 7.x
+
+# Set arm-eabi version to be used to compile Kernel and bootloader
+KERNEL_TOOLCHAIN := 7.x
+BOOTLOADER_TOOLCHAIN := 7.x
 
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RECOVERY := false
